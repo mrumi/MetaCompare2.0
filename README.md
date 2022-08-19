@@ -67,39 +67,13 @@ The following command runs MetaCompare2.0 with 128 threads.
 The output should be look like as follows:
 ```
 Running Prodigal
-Running blastn on ACLAME
-Running blastx on CARD
-Running blastn on PATRIC
-Reading files...
-Computing resistome risk score..
-Resistome risk score: 38.64014990951873
+Running Diamond Blastx on ARGDB
+Running Diamond Blastx on ARGDB_hh
+Running Diamond Blastx on MGEDB
+Running mmseq2 on GTDB
 ```
 
 You can see detailed description for command line options by using `-h` option.
 ```
-~$ ./metacmp.py -h
+~$ python metacompare.py -h
 ```
-
-## License
-
-MIT License
-
-Copyright (c) 2018 Min Oh (minoh@vt.edu)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
