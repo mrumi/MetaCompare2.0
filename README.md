@@ -56,8 +56,7 @@ MetaCompare2.0 requires one FASTA file as input and that is assembled contigs ge
 
 Suppose you have an assembled contigs file, `S1.fa` (*This file is already in your working directory*).
 
-The following command runs MetaCompare2.0 with 128 threads.
-
+Use following command to run MetaCompare2.0.
 ```
 ~$ python metacompare.py -c S1.fa 
 ```
