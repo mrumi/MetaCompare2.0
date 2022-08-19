@@ -22,7 +22,7 @@ These instructions will get you a copy of the project up and running on your loc
 **Step 1:** Change the current working directory to the location where you want the cloned `MetaCompare` directory to be made.
 **Step 2:** Clone the repository using git command
 ```
-~$ git clone https://github.com/minoh0201/MetaCompare
+~$ git clone https://github.com/mrumi/MetaCompare2.0.git
 ```
 
 **Step 3:** Make directory `BlastDB` under `MetaCompare` directory and change the woring directory to it.
