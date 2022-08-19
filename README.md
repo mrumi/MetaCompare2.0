@@ -14,8 +14,8 @@ These instructions will get you a copy of the project up and running on your loc
   * `pip install biopython`
   * `pip install pprodigal`
 
-* DIAMOND (https://github.com/bbuchfink/diamond)
-* MMseqs2 (https://github.com/soedinglab/MMseqs2)
+* DIAMOND installed (https://github.com/bbuchfink/diamond)
+* MMseqs2 installed (https://github.com/soedinglab/MMseqs2)
 
 ### Installing
 
