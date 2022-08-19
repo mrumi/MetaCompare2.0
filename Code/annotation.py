@@ -14,10 +14,10 @@ def generate_annotation(contig_file, out_dir, nthread = '64'):
 	prodigal_file = os.path.join(out_dir, sample_name + "_genes." + contig_file.split('/')[-1].split('.')[1]) 
 
 	if not os.path.exists(prodigal_file):
-		print("running prodigal")
+		print("Running Prodigal")
 		subprocess.call(["pprodigal", "-i", contig_file, "-d", prodigal_file, "-p", "meta", "-o", os.path.join(out_dir, "prodigal_log")])
 	else:
-		print("Skipping: prodigal output already exists")
+		print("Skipping: Prodigal output already exists")
 
 	
 	arg_name = sample_name + "_ARG.csv"		
@@ -27,16 +27,16 @@ def generate_annotation(contig_file, out_dir, nthread = '64'):
 						"--out", os.path.join(out_dir, arg_name), "--outfmt", "6", \
 						"--threads", nthread, "--evalue", "1e-10"])
 	else:
-		print('Skipping: Diamond Blast output against ARGs already exists')
+		print('Skipping: Diamond output against ARGs already exists')
 		
 	arg_name_hh = sample_name + "_hh_ARG.csv"	
 	if not os.path.exists(os.path.join(out_dir, arg_name_hh)):
-		print('Running Diamond Blastx on ARGDB')
+		print('Running Diamond Blastx on ARGDB_hh')
 		subprocess.call(["diamond", "blastx", "-d", os.path.dirname(os.path.abspath(__file__))+"/BlastDB/ARGDB_hh", "--query", prodigal_file, \
 						"--out", os.path.join(out_dir, arg_name_hh), "--outfmt", "6", \
 						"--threads", nthread, "--evalue", "1e-10"])
 	else:
-		print('Skipping: Diamond Blast output against ARGs already exists')
+		print('Skipping: Diamond output against ARGs already exists')
 		
 	mge_name = sample_name + "_MGE.csv"
 	if not os.path.exists(os.path.join(out_dir, mge_name)):
@@ -45,7 +45,7 @@ def generate_annotation(contig_file, out_dir, nthread = '64'):
 						"--out", os.path.join(out_dir, mge_name), "--outfmt", "6", \
 						"--threads", nthread, "--evalue", "1e-10"])
 	else:
-		print('Skipping: Diamond Blast output against MGEs already exists')
+		print('Skipping: Diamond output against MGEs already exists')
 
 	pathogen_name = sample_name + "_Pathogens.tsv"
 	if not os.path.exists(os.path.join(out_dir, pathogen_name)):
