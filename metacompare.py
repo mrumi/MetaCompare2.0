@@ -21,7 +21,6 @@ if __name__ == '__main__':
 		print('\t-c: Specify FASTA file containing assembled contigs')
 		print('\t-t: Specify the number of threads will be used in executing blast (default: 64).')
 		print('\t-b: Specify the pipeline to execute [0: both (default), 1: ecological risk score, 2: human health risk score ].')
-		print('\t-v: Generating visualization files On/Off [1: On (default), 0: Off]')
 		print('\t-o: output file path')
 		print()
 		exit()
@@ -31,9 +30,6 @@ if __name__ == '__main__':
 		nthread = myargs['-t']
 	else:
 		nthread = '64'
-	
-	if not '-v' in myargs:
-		myargs['-v'] = '1'
 
 	if not '-o' in myargs:
 		myargs['-o'] = ''
@@ -49,22 +45,22 @@ if __name__ == '__main__':
 	annotated_data = generate_annotation(myargs['-c'], myargs['-o'], nthread)	
 	
 	if pipeline == 1:		
-		data_to_be_processed = [annotated_data[1], annotated_data[2], annotated_data[3]]
+		data_to_be_processed = [annotated_data[0], annotated_data[1], annotated_data[2]]
 		pathogens = os.path.join(os.path.dirname(os.path.abspath(__file__)), "BlastDB/pathogen_list.txt")
 		filtered_data = process_annotation(data_to_be_processed, mge_len_file, pathogens)
 		result = calculate_score(myargs['-c'], filtered_data, pipeline)
 	elif pipeline == 2:		
-		data_to_be_processed = [annotated_data[4], annotated_data[2], annotated_data[3]]
+		data_to_be_processed = [annotated_data[3], annotated_data[1], annotated_data[2]]
 		pathogens = os.path.join(os.path.dirname(os.path.abspath(__file__)), "BlastDB/eskape.txt")
 		filtered_data = process_annotation(data_to_be_processed, mge_len_file, pathogens)
 		result = calculate_score(myargs['-c'], filtered_data, pipeline)
 	else:
-		data_to_be_processed = [annotated_data[1], annotated_data[2], annotated_data[3]]
+		data_to_be_processed = [annotated_data[0], annotated_data[1], annotated_data[2]]
 		pathogens = os.path.join(os.path.dirname(os.path.abspath(__file__)), "BlastDB/pathogen_list.txt")
 		filtered_data_e = process_annotation(data_to_be_processed, mge_len_file, pathogens)
 		result_e = calculate_score(myargs['-c'], filtered_data_e, 1)
 		
-		data_to_be_processed = [annotated_data[4], annotated_data[2], annotated_data[3]]
+		data_to_be_processed = [annotated_data[3], annotated_data[1], annotated_data[2]]
 		pathogens = os.path.join(os.path.dirname(os.path.abspath(__file__)), "BlastDB/eskape.txt")
 		filtered_data_h = process_annotation(data_to_be_processed, mge_len_file, pathogens)
 		result_h = calculate_score(myargs['-c'], filtered_data_h, 2)
@@ -72,13 +68,6 @@ if __name__ == '__main__':
 		result = result_e.append(result_h)
 	
 	result.to_csv(out_file, header=True, index=None, sep = "\t")
-
-	if myargs['-v'] == '1' :
-		if pipeline == 1 or pipeline == 2:
-			visual_file_creation(filtered_data, myargs['-o'], annotated_data[0], pipeline)			
-		else :
-			visual_file_creation(filtered_data_e, myargs['-o'], annotated_data[0], 1)
-			visual_file_creation(filtered_data_h, myargs['-o'], annotated_data[0], 2)
 			
 	
 	
