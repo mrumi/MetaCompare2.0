@@ -57,7 +57,7 @@ def generate_annotation(contig_file, out_dir, nthread = '64'):
 	else:
 		print('Skipping: mmseq2 output against Pathogens already exists')
 	
-	return [prodigal_file, os.path.join(out_dir, arg_name), os.path.join(out_dir, mge_name), os.path.join(out_dir, pathogen_name), os.path.join(out_dir, arg_name_hh)]
+	return [os.path.join(out_dir, arg_name), os.path.join(out_dir, mge_name), os.path.join(out_dir, pathogen_name), os.path.join(out_dir, arg_name_hh)]
 
 def filter_diamond(filename):
 	data = pd.read_csv(filename, sep='\t', header=None)
