@@ -58,7 +58,7 @@ Suppose you have an assembled contigs file, `S1.fa` (*This file is already in yo
 
 Use following command to run MetaCompare2.0.
 ```
-~$ python metacompare.py -c S1.fa 
+~$ python metacompare.py -c S1.fa
 ```
 The output should be look like as follows:
 ```
