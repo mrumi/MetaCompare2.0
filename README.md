@@ -31,7 +31,7 @@ MetaCompare2.0 is an updated version of MetaCompare.
 ~/MetaCompare2.0/BlastDB$
 ```
 
-**Step 4:** Download the compressed Blast Database file from the web server and uncompress it.
+**Step 3:** Download the compressed Blast Database file from the web server and uncompress it.
 
 ```
 ~/MetaCompare2.0/BlastDB$ wget http://bench.cs.vt.edu/ftp/data/metacompare2/BlastDB.tar.gz
@@ -39,7 +39,7 @@ MetaCompare2.0 is an updated version of MetaCompare.
 ```
 *Note:* If you are encountering `ERROR: cannot verify bench.cs.vt.edu's certificate`, execute wget command with `--no-check-certificate` option (`wget http://bench.cs.vt.edu/ftp/data/metacompare2/BlastDB.tar.gz --no-check-certificate`).
 
-**Step 5:** Get back to working directory `MetaCompare2.0` and run `metacompare.py`
+**Step 4:** Get back to working directory `MetaCompare2.0` and run `metacompare.py`
 
 ```
 ~/MetaCompare2.0/BlastDB$ cd ../code
