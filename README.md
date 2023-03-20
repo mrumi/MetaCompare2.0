@@ -26,7 +26,7 @@ MetaCompare2.0 is an updated version of MetaCompare.
 
 ```
 ~/MetaCompare2.0$ wget http://bench.cs.vt.edu/ftp/data/metacompare2/metacmpDB.tar.gz
-~/MetaCompare2.0$ tar -zxvf BlastDB.tar.gz
+~/MetaCompare2.0$ tar -zxvf metacmpDB.tar.gz
 ```
 *Note:* If you are encountering `ERROR: cannot verify bench.cs.vt.edu's certificate`, execute wget command with `--no-check-certificate` option (`wget http://bench.cs.vt.edu/ftp/data/metacompare2/metacmpDB.tar.gz --no-check-certificate`).
 
