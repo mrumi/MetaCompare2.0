@@ -17,6 +17,7 @@ MetaCompare2.0 is an updated version of MetaCompare.
 ### Installing
 
 **Step 1:** Change the current working directory to the location where you want the cloned `MetaCompare2.0` directory to be made.
+
 **Step 2:** Clone the repository using git command
 ```
 ~$ git clone https://github.com/mrumi/MetaCompare2.0.git
