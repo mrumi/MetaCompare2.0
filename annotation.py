@@ -23,7 +23,7 @@ def generate_annotation(contig_file, out_dir, nthread = '64'):
 	arg_name = sample_name + "_ARG.csv"		
 	if not os.path.exists(os.path.join(out_dir, arg_name)):
 		print('Running Diamond Blastx on ARGDB')
-		subprocess.call(["diamond", "blastx", "-d", os.path.dirname(os.path.abspath(__file__))+"/BlastDB/ARGDB", "--query", prodigal_file, \
+		subprocess.call(["diamond", "blastx", "-d", os.path.dirname(os.path.abspath(__file__))+"/metacmpDB/ARGDB", "--query", prodigal_file, \
 						"--out", os.path.join(out_dir, arg_name), "--outfmt", "6", \
 						"--threads", nthread, "--evalue", "1e-10"])
 	else:
@@ -32,7 +32,7 @@ def generate_annotation(contig_file, out_dir, nthread = '64'):
 	arg_name_hh = sample_name + "_hh_ARG.csv"	
 	if not os.path.exists(os.path.join(out_dir, arg_name_hh)):
 		print('Running Diamond Blastx on ARGDB_hh')
-		subprocess.call(["diamond", "blastx", "-d", os.path.dirname(os.path.abspath(__file__))+"/BlastDB/ARGDB_hh", "--query", prodigal_file, \
+		subprocess.call(["diamond", "blastx", "-d", os.path.dirname(os.path.abspath(__file__))+"/metacmpDB/ARGDB_hh", "--query", prodigal_file, \
 						"--out", os.path.join(out_dir, arg_name_hh), "--outfmt", "6", \
 						"--threads", nthread, "--evalue", "1e-10"])
 	else:
@@ -41,7 +41,7 @@ def generate_annotation(contig_file, out_dir, nthread = '64'):
 	mge_name = sample_name + "_MGE.csv"
 	if not os.path.exists(os.path.join(out_dir, mge_name)):
 		print('Running Diamond Blastx on MGEDB')
-		subprocess.call(["diamond", "blastx", "-d", os.path.dirname(os.path.abspath(__file__))+"/BlastDB/MGEDB", "--query", prodigal_file, \
+		subprocess.call(["diamond", "blastx", "-d", os.path.dirname(os.path.abspath(__file__))+"/metacmpDB/MGEDB", "--query", prodigal_file, \
 						"--out", os.path.join(out_dir, mge_name), "--outfmt", "6", \
 						"--threads", nthread, "--evalue", "1e-10"])
 	else:
