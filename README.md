@@ -4,6 +4,7 @@ MetaCompare2.0 is an updated version of MetaCompare.
 
 ## Getting Started
 ### System Requirements 
+**Source Installation**
 
 * git installed
 * Python3 with `pandas` and `biopython` package installed
