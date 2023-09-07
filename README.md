@@ -7,7 +7,8 @@ MetaCompare2.0 is an updated version of MetaCompare.
 **Source Installation**
 
 * git installed
-* Python3 with `pandas` and `biopython` package installed
+* Python3 with `numpy`, `pandas` and `biopython` package installed
+  * `pip install numpy`
   * `pip install pandas`
   * `pip install biopython`
   * `pip install pprodigal`
@@ -18,7 +19,7 @@ MetaCompare2.0 is an updated version of MetaCompare.
 **Conda Installation**
 
 * git installed
-* Python3 with `pandas` and `biopython` package installed
+* Python packages installation with `pandas` and `biopython` package installed
   * `pip install pandas`
   * `pip install biopython`
   * `pip install pprodigal`
