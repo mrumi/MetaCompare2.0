@@ -15,6 +15,17 @@ MetaCompare2.0 is an updated version of MetaCompare.
 * DIAMOND installed (https://github.com/bbuchfink/diamond)
 * MMseqs2 installed (https://github.com/soedinglab/MMseqs2)
 
+**Conda Installation**
+
+* git installed
+* Python3 with `pandas` and `biopython` package installed
+  * `pip install pandas`
+  * `pip install biopython`
+  * `pip install pprodigal`
+
+* DIAMOND installed (https://github.com/bbuchfink/diamond)
+* MMseqs2 installed (https://github.com/soedinglab/MMseqs2)
+
 ### Installing
 
 **Step 1:** Change the current working directory to the location where you want the cloned `MetaCompare2.0` directory to be made.
