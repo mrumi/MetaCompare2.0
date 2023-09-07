@@ -17,12 +17,14 @@ MetaCompare2.0 is an updated version of MetaCompare.
 * MMseqs2 installed (https://github.com/soedinglab/MMseqs2)
 
 **Conda Installation**
-
-* git installed
-* Python packages installation with `pandas` and `biopython` package installed
-  * `pip install pandas`
+Required Python packages and alignment tools can also be installed using Conda
+* Python packages installation 
+  * `conda install -c anaconda numpy`
+  * `conda install -c anaconda numpy`
   * `pip install biopython`
   * `pip install pprodigal`
+    
+* Alignment tools installation 
 
 * DIAMOND installed (https://github.com/bbuchfink/diamond)
 * MMseqs2 installed (https://github.com/soedinglab/MMseqs2)
