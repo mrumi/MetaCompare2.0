@@ -21,13 +21,13 @@ Required Python packages and alignment tools can also be installed using Conda
 * Python packages installation 
   * `conda install -c anaconda numpy`
   * `conda install -c anaconda numpy`
-  * `pip install biopython`
-  * `pip install pprodigal`
+  * `conda install -c conda-forge biopython`
+  * `conda install -c bioconda pprodigal`
     
 * Alignment tools installation 
 
-* DIAMOND installed (https://github.com/bbuchfink/diamond)
-* MMseqs2 installed (https://github.com/soedinglab/MMseqs2)
+* `conda install -c bioconda diamond`
+* `conda install -c bioconda mmseqs2`
 
 ### Installing
 
