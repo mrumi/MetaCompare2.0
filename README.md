@@ -24,7 +24,7 @@ Python packages installation
 
   * `conda install -c anaconda numpy`
   * `conda install -c anaconda numpy`
-  * `conda install -c conda-forge biopython`
+  * `conda install -c bioconda biopython`
   * `conda install -c bioconda pprodigal`
     
  Alignment tools installation 
