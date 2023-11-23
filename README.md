@@ -41,9 +41,11 @@ Python packages installation
 ~$ git clone https://github.com/mrumi/MetaCompare2.0.git
 ```
 
-**Step 3:** Download the compressed Database file using the following link link and uncompress it.
+**Step 3:** Download the compressed Database file using the following link and move it to the same directory as the code files.
 
 Download link: https://drive.google.com/file/d/10Rc-Fc5gALUHZs4Yd0NUTfKu--C0fJNI/view?usp=sharing
+
+Uncompress the database before using. 
 
 ```
 ~/MetaCompare2.0$ tar -zxvf metacmpDB.tar.gz
