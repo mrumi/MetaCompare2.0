@@ -19,15 +19,23 @@ def calculate_score(contig_file, all_data, pipline):
 		"qARG_MGE_PAT", "distance", "Risk Score"]
 		
 	def risk_score(arg_data, mge_data, pat_data):
-		arg_temp = arg_data.copy()
-		mge_temp = mge_data.copy()
+		if arg_data.empty:
+			ARG = []
+		else:
+			arg_temp = arg_data.copy()
+			arg_temp['id'] = arg_temp['id'].apply(modify)
+			ARG = arg_temp.id.unique().tolist()
 		
-		arg_temp['id'] = arg_temp['id'].apply(modify)
-		mge_temp['id'] = mge_temp['id'].apply(modify)
-		#get ARG, MGE, PAT contigs
-		ARG = arg_temp.id.unique().tolist()        
-		MGE = mge_temp.id.unique().tolist()        
-		PAT = pat_data.id.unique().tolist()
+		if mge_data.empty:
+			MGE = []
+		else:
+			mge_temp = mge_data.copy()
+			mge_temp['id'] = mge_temp['id'].apply(modify)
+			MGE = mge_temp.id.unique().tolist()
+		if pat_data.empty:
+			PAT = []
+		else:    
+			PAT = pat_data.id.unique().tolist()
 
 		#get common ones
 		ARG_MGE = intersection(ARG, MGE)        
@@ -41,20 +49,34 @@ def calculate_score(contig_file, all_data, pipline):
 		nARG_MGE_PAT = len(ARG_MGE_PAT)
 		
 		# normalize
-		fARG = float(nARG)/nContigs
-		fARG_MGE = float(nARG_MGE)/nContigs
-		fARG_PAT = float(nARG_PAT)/nContigs
-		fARG_MGE_PAT = float(nARG_MGE_PAT)/nContigs
+		if nContigs == 0:
+			fARG = 0.0
+			fARG_MGE = 0.0
+			fARG_PAT = 0.0
+			fARG_MGE_PAT = 0.0
+		else:
+			fARG = float(nARG)/nContigs
+			fARG_MGE = float(nARG_MGE)/nContigs
+			fARG_PAT = float(nARG_PAT)/nContigs
+			fARG_MGE_PAT = float(nARG_MGE_PAT)/nContigs
 		
-		distance = math.sqrt((0.01 - fARG)**2 + (0.01 - fARG_MGE)**2 + (0.01 - fARG_MGE_PAT)**2)
-		d = math.sqrt((0.01 - 0)**2 + (0.01 - 0)**2 + (0.01 - 0)**2)
-		score = 1.0 / ((2 + math.log10(distance))**2) - 1.0 / ((2 + math.log10(d))**2) 
+		if pipeline == 1:
+			distance = math.sqrt((1 - fARG)**2 + (1 - fARG_MGE)**2 + (1 - fARG_MGE_PAT)**2)
+			d = math.sqrt((1 - 0)**2 + (1 - 0)**2 + (1 - 0)**2)
+		elif pipeline == 2:
+			distance = math.sqrt((1 - fARG)**2 + (1 - fARG_MGE)**2 + (1 - fARG_PAT)**2 + (1 - fARG_MGE_PAT)**2)
+			d = math.sqrt((1 - 0)**2 + (1 - 0)**2 + (1 - 0)**2 + (1 - 0)**2)
+		score = (1 - distance/d)*10000
 		
 		#other statics
 		nMGE = len(MGE)
 		nPAT = len(PAT)
-		fMGE = float(nMGE)/nContigs
-		fPAT = float(nPAT)/nContigs
+		if nContigs == 0:
+			fMGE = 0.0
+			fPAT = 0.0
+		else:
+			fMGE = float(nMGE)/nContigs
+			fPAT = float(nPAT)/nContigs
 	
 		# make a suitable format for printing
 		fARG = round(fARG, 6)
@@ -64,15 +86,10 @@ def calculate_score(contig_file, all_data, pipline):
 		fARG_MGE_PAT = round(fARG_MGE_PAT, 6)
 		distance = round(distance, 6)
 		score = round(score, 6)
-		
-		# output = [nContigs, nARG, nMGE, nPAT, nARG_MGE, nARG_MGE_PAT, fARG, fMGE, fPAT, fARG_MGE, fARG_MGE_PAT, score]
-		# f = open(os.path.join(os.path.dirname(outfile), "out.txt"), "w")
-		# for content in output:
-			# f.write(str(content) + ",")
 
 		return [nContigs, nARG, nMGE, nPAT, nARG_MGE, nARG_PAT, nARG_MGE_PAT, fARG, fMGE, fPAT, fARG_MGE, fARG_PAT, fARG_MGE_PAT, distance, score]	
 		
-	rs = risk_score(all_data[0], all_data[1], all_data[2])	
+	rs = risk_score(all_data[0], all_data[1], all_data[2], pipeline)	
 	if pipline == 1:
 		rs.insert(0, "Ecological")	
 	elif pipline == 2:
