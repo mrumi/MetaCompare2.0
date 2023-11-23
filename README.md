@@ -41,13 +41,13 @@ Python packages installation
 ~$ git clone https://github.com/mrumi/MetaCompare2.0.git
 ```
 
-**Step 3:** Download the compressed Database file from the web server and uncompress it.
+**Step 3:** Download the compressed Database file using the following link link and uncompress it.
+
+Download link: https://drive.google.com/file/d/10Rc-Fc5gALUHZs4Yd0NUTfKu--C0fJNI/view?usp=sharing
 
 ```
-~/MetaCompare2.0$ wget http://bench.cs.vt.edu/ftp/data/metacompare2/metacmpDB.tar.gz
 ~/MetaCompare2.0$ tar -zxvf metacmpDB.tar.gz
 ```
-*Note:* If you are encountering `ERROR: cannot verify bench.cs.vt.edu's certificate`, execute wget command with `--no-check-certificate` option (`wget http://bench.cs.vt.edu/ftp/data/metacompare2/metacmpDB.tar.gz --no-check-certificate`).
 
 ## Running MetaCompare2.0
 
