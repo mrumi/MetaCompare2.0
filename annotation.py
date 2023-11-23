@@ -1,6 +1,7 @@
-import os, sys
+import os, sys, glob
 import subprocess
 import pandas as pd
+import shutil
 
 import warnings
 warnings.simplefilter(action='ignore', category=Warning)
@@ -15,7 +16,7 @@ def generate_annotation(contig_file, out_dir, nthread = '64'):
 
 	if not os.path.exists(prodigal_file):
 		print("Running Prodigal")
-		subprocess.call(["pprodigal", "-i", contig_file, "-d", prodigal_file, "-p", "meta", "-o", os.path.join(out_dir, "prodigal_log")])
+		subprocess.call(["pprodigal", "-i", contig_file, "-d", prodigal_file, "-p", "meta", "-C", "4000", "-T", "32", "-o", os.path.join(out_dir, "prodigal_log")])
 	else:
 		print("Skipping: Prodigal output already exists")
 
@@ -54,6 +55,14 @@ def generate_annotation(contig_file, out_dir, nthread = '64'):
 		if(out_dir != "" and not out_dir.endswith('/')):
 			out_dir += "/"		
 		subprocess.call(['sh', os.path.dirname(os.path.abspath(__file__))+"/./mmseq.sh", contig_file, out_dir, pathogen_name])
+		try:
+            shutil.rmtree(os.path.join(out_dir, "sample.tmpFolder"))
+            for f in glob.glob(os.path.join(out_dir, "sample.contigs*")):
+                os.remove(f)
+            for f in glob.glob(os.path.join(out_dir, "sample.assignments*")):
+                os.remove(f)
+        except OSError as e:
+            print("Error: %s - %s." % (e.filename, e.strerror))
 	else:
 		print('Skipping: mmseq2 output against Pathogens already exists')
 	
@@ -81,15 +90,16 @@ def process_annotation(data_files, mge_len_file, pathogen_list):
 	if not os.path.getsize(arg_file) > 0:
 		#file is empty
 		print('Warning: '+ arg_file+ ' is empty.')
+		arg_data = pd.DataFrame()
 	else:		
 		arg_data = filter_diamond(arg_file)		
-		# Note: 'arg_data' data frame contains name and position of Antibiotic Resistence Genes in contigs
-		#arg_data['id'] = arg_data['id'].apply(modify)			
+		# Note: 'arg_data' data frame contains name and position of Antibiotic Resistence Genes in contigs		
 		
 	# Open blast output against MGE DB
 	if not os.path.getsize(mge_file) > 0:
 		#file is empty
 		print('Warning: '+ mge_file + ' is empty.')
+		mge_data = pd.DataFrame()
 	else:
 		mge_data = filter_diamond(mge_file) 
 		# filter out contigs having less than 90% coverage of the reference
@@ -102,16 +112,16 @@ def process_annotation(data_files, mge_len_file, pathogen_list):
 			mge_merged = pd.merge(mge_data, mge_len, how = 'left', on = 'sub_id')
 			mge_final = mge_merged[mge_merged.alignLen > (mge_merged.ref_gene_leng * COVG_OF_ALIGN_MGE)]		
 			# Note: 'mge_final' data frame contains name and position of MGEs in contigs
-			#mge_final['id'] =  mge_final ['id'].apply(modify)
             
 	# Open mmseq output against GTDB database 
 	if not os.path.getsize(path_file) > 0:
 		#file is empty 
 		print('Warning: '+ path_file + ' is empty.')
+		path_all = pd.DataFrame()
 	else:
 		path_data = pd.read_csv(path_file, sep='\t', header=None)
 		path_data.columns = ['id', 'NCBI_ID','rank', 'name', 'nPass', 'nRetain', 'nAssign', 'bit', 'taxonomy']
-		path_filtered = path_data.loc[path_data['rank'].isin(["genus", "species", "strain"])]
+		path_filtered = path_data.loc[path_data['rank'].isin(["family", "genus", "species", "strain"])]
 		
 		def get_pathogens(path_data, path_file):
 			pathogens = pd.read_csv(path_file, sep = "\t")
@@ -134,5 +144,5 @@ def process_annotation(data_files, mge_len_file, pathogen_list):
 			return path_final
 				
 		path_all = get_pathogens(path_filtered, pathogen_list)
-		#path_eskape = get_pathogens(path_filtered, pathogen_list[1])		
-	return [arg_data, mge_final, path_all]#, arg_hh_data, path_eskape]
+		
+	return [arg_data, mge_final, path_all]
