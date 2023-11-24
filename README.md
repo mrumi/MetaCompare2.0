@@ -29,7 +29,7 @@ Python packages installation
     
  Alignment tools installation 
 
-* `conda install -c bioconda diamond`
+* `conda install -c bioconda diamond=0.9.14`
 * `conda install -c bioconda mmseqs2`
 
 ### Installing
