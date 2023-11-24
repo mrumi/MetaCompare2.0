@@ -65,7 +65,7 @@ Use following command to run MetaCompare2.0.
 ```
 ~$ python metacompare.py -c S1.fa
 ```
-The output should be look like as follows:
+The output should look like as follows:
 ```
 Running Prodigal
 Running Diamond Blastx on ARGDB
@@ -73,6 +73,7 @@ Running Diamond Blastx on ARGDB_hh
 Running Diamond Blastx on MGEDB
 Running mmseq2 on GTDB
 ```
+The final output will be found in a text file ending with "_out.txt". 
 
 You can see detailed description for command line options by using `-h` option.
 ```
