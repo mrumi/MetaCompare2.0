@@ -46,22 +46,22 @@ if __name__ == '__main__':
 	annotated_data = generate_annotation(myargs['-c'], myargs['-o'], nthread)	
 	
 	if pipeline == 1:		
-		data_to_be_processed = [annotated_data[1], annotated_data[2], annotated_data[3]]
+		data_to_be_processed = [annotated_data[0], annotated_data[1], annotated_data[2]]
 		pathogens = os.path.join(os.path.dirname(os.path.abspath(__file__)), "metacmpDB/pathogen_list.txt")
 		filtered_data = process_annotation(data_to_be_processed, mge_len_file, pathogens)
 		result = calculate_score(myargs['-c'], filtered_data, pipeline)
 	elif pipeline == 2:		
-		data_to_be_processed = [annotated_data[4], annotated_data[2], annotated_data[3]]
+		data_to_be_processed = [annotated_data[3], annotated_data[1], annotated_data[2]]
 		pathogens = os.path.join(os.path.dirname(os.path.abspath(__file__)), "metacmpDB/eskape.txt")
 		filtered_data = process_annotation(data_to_be_processed, mge_len_file, pathogens)
 		result = calculate_score(myargs['-c'], filtered_data, pipeline)
 	else:
-		data_to_be_processed = [annotated_data[1], annotated_data[2], annotated_data[3]]
+		data_to_be_processed = [annotated_data[0], annotated_data[1], annotated_data[2]]
 		pathogens = os.path.join(os.path.dirname(os.path.abspath(__file__)), "metacmpDB/pathogen_list.txt")
 		filtered_data_e = process_annotation(data_to_be_processed, mge_len_file, pathogens)
 		result_e = calculate_score(myargs['-c'], filtered_data_e, 1)
 		
-		data_to_be_processed = [annotated_data[4], annotated_data[2], annotated_data[3]]
+		data_to_be_processed = [annotated_data[3], annotated_data[1], annotated_data[2]]
 		pathogens = os.path.join(os.path.dirname(os.path.abspath(__file__)), "metacmpDB/eskape.txt")
 		filtered_data_h = process_annotation(data_to_be_processed, mge_len_file, pathogens)
 		result_h = calculate_score(myargs['-c'], filtered_data_h, 2)
