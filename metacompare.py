@@ -19,7 +19,7 @@ if __name__ == '__main__':
 	myargs = getopts(argv)
 	if '-h' in myargs or len(myargs) == 0:  # Example usage.
 		print('\nUsage: ./metacmp.py -c filename1.fa [-t 64 -b 1] \n')
-		print('\t-c: Specify FASTA file containing assembled contigs')
+		print('\t-c: Specify FASTA file containing assembled contigs [required]')
 		print('\t-t: Specify the number of threads will be used in executing blast (default: 64).')
 		print('\t-b: Specify the pipeline to execute [0: both (default), 1: ecological risk score, 2: human health risk score ].')
 		print('\t-o: output file path')
