@@ -39,7 +39,7 @@ if __name__ == '__main__':
 		myargs['-b'] = '0'
 		
 	pipeline = int(myargs['-b'])
-	mge_len_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "metacmpDB/mobileAll_len.txt")
+	mge_len_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "metacmpDB/MGE_len.txt")
 	sample_name = os.path.splitext(os.path.basename(myargs['-c']))[0]
 	out_file = os.path.join(myargs['-o'], sample_name + "_out.txt")	
 		
