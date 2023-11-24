@@ -56,13 +56,13 @@ def generate_annotation(contig_file, out_dir, nthread = '64'):
 			out_dir += "/"		
 		subprocess.call(['sh', os.path.dirname(os.path.abspath(__file__))+"/./mmseq.sh", contig_file, out_dir, pathogen_name])
 		try:
-            shutil.rmtree(os.path.join(out_dir, "sample.tmpFolder"))
-            for f in glob.glob(os.path.join(out_dir, "sample.contigs*")):
-                os.remove(f)
-            for f in glob.glob(os.path.join(out_dir, "sample.assignments*")):
-                os.remove(f)
-        except OSError as e:
-            print("Error: %s - %s." % (e.filename, e.strerror))
+            		shutil.rmtree(os.path.join(out_dir, "sample.tmpFolder"))
+			for f in glob.glob(os.path.join(out_dir, "sample.contigs*")):
+				os.remove(f)
+			for f in glob.glob(os.path.join(out_dir, "sample.assignments*")):
+				os.remove(f)
+		except OSError as e:
+			print("Error: %s - %s." % (e.filename, e.strerror))
 	else:
 		print('Skipping: mmseq2 output against Pathogens already exists')
 	
