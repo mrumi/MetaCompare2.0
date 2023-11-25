@@ -10,7 +10,7 @@ def modify(gene):
 	contig_name = gene.split("_")
 	return "_".join(contig_name[:-1])
 
-def calculate_score(contig_file, all_data, pipline):
+def calculate_score(contig_file, all_data, pipeline):
 	#Open Fasta file
 	records = list(SeqIO.parse(contig_file, "fasta"))
 	nContigs = len(records)
@@ -90,9 +90,9 @@ def calculate_score(contig_file, all_data, pipline):
 		return [nContigs, nARG, nMGE, nPAT, nARG_MGE, nARG_PAT, nARG_MGE_PAT, fARG, fMGE, fPAT, fARG_MGE, fARG_PAT, fARG_MGE_PAT, distance, score]	
 		
 	rs = risk_score(all_data[0], all_data[1], all_data[2], pipeline)	
-	if pipline == 1:
+	if pipeline == 1:
 		rs.insert(0, "Ecological")	
-	elif pipline == 2:
+	elif pipeline == 2:
 		rs.insert(0, "Human health")		
 	result = pd.DataFrame(list(zip(res_columns, rs)), columns =['Name', 'quantity']) 
 	return result	
