@@ -18,7 +18,7 @@ def calculate_score(contig_file, all_data, pipline):
 	res_columns = ["score type","nContigs", "nARG", "nMGE", "nPAT", "nARG_MGE", "nARG_PAT", "nARG_MGE_PAT", "qARG", "qMGE", "qPAT", "qARG_MGE", "qARG_PAT", \
 		"qARG_MGE_PAT", "distance", "Risk Score"]
 		
-	def risk_score(arg_data, mge_data, pat_data):
+	def risk_score(arg_data, mge_data, pat_data, pipeline):
 		if arg_data.empty:
 			ARG = []
 		else:
