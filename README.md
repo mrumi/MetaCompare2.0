@@ -79,3 +79,7 @@ You can see detailed description for command line options by using `-h` option.
 ```
 ~$ python metacompare.py -h
 ```
+
+### Citation
+Rumi, M. A., Oh, M., Davis, B. C., Juvekar, A. Brown, C. L., Vikesland, P. J., Pruden, A., & Zhang, L. (2024). MetaCompare 2.0: Differential ranking of ecological and human health resistome risks.
+
