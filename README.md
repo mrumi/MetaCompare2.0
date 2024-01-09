@@ -23,7 +23,7 @@ Required Python packages and alignment tools can also be installed using conda.
 Python packages installation 
 
   * `conda install -c anaconda numpy`
-  * `conda install -c anaconda numpy`
+  * `conda install -c anaconda pandas`
   * `conda install -c bioconda biopython`
   * `conda install -c bioconda pprodigal`
     
