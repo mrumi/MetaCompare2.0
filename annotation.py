@@ -131,7 +131,7 @@ def process_annotation(data_files, mge_len_file, pathogen_list):
 				filtered_data = path_data.loc[path_data['rank'].isin([rank])]
 				path_of_rank = pathogens.loc[pathogens['rank'] == rank]["name"].values.tolist()
 				selected_data=filtered_data.loc[filtered_data['name'].isin(path_of_rank)]
-				path_final = path_final.append(selected_data)
+				path_final = pd.concat([path_final, selected_data])
 			
 			### only for strain
 			filtered_data = path_data.loc[path_data['rank'].isin(["strain"])]
