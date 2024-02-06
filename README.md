@@ -43,7 +43,7 @@ Python packages installation
 
 **Step 3:** Download the compressed Database file using the following link and move it to the same directory as the code files.
 
-Download link: https://drive.google.com/file/d/10Rc-Fc5gALUHZs4Yd0NUTfKu--C0fJNI/view?usp=sharing
+Download link: https://zenodo.org/records/10626079
 
 Uncompress the database before using. 
 
@@ -82,4 +82,6 @@ You can see detailed description for command line options by using `-h` option.
 
 ### Citation
 Rumi, M. A., Oh, M., Davis, B. C., Juvekar, A. Brown, C. L., Vikesland, P. J., Pruden, A., & Zhang, L. (2024). MetaCompare 2.0: Differential ranking of ecological and human health resistome risks.
+
+Preprint link: https://www.biorxiv.org/content/10.1101/2024.01.17.576132v1
 
