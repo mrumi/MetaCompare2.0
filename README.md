@@ -45,7 +45,7 @@ Python packages installation
 
 Download link: https://zenodo.org/records/10626079
 
-Command-line option for downloading: `wget https://zenodo.org/api/records/10626079/files/metacmpDB.tar.gz/content`
+Database can be downloaded from Zenodo either manually or using the following command: `wget https://zenodo.org/api/records/10626079/files/metacmpDB.tar.gz/content`
 
 Uncompress the database before using. 
 
