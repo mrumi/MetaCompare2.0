@@ -36,9 +36,10 @@ Python packages installation
 
 **Step 1:** Change the current working directory to the location where you want the cloned `MetaCompare2.0` directory to be made.
 
-**Step 2:** Clone the repository using git command
+**Step 2:** Clone the repository using git command and move to code directory
 ```
 ~$ git clone https://github.com/mrumi/MetaCompare2.0.git
+~$ cd MetaCompare2.0
 ```
 
 **Step 3:** Download the compressed Database file using the following link and move it to the same directory as the code files.
