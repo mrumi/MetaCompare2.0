@@ -84,7 +84,5 @@ You can see detailed description for command line options by using `-h` option.
 ```
 
 ### Citation
-Rumi, M. A., Oh, M., Davis, B. C., Juvekar, A. Brown, C. L., Vikesland, P. J., Pruden, A., & Zhang, L. (2024). MetaCompare 2.0: Differential ranking of ecological and human health resistome risks.
-
-Preprint link: https://www.biorxiv.org/content/10.1101/2024.01.17.576132v1
+Monjura Afrin Rumi, Min Oh, Benjamin C Davis, Connor L Brown, Adheesh Juvekar, Peter J Vikesland, Amy Pruden, Liqing Zhang, MetaCompare 2.0: differential ranking of ecological and human health resistome risks, FEMS Microbiology Ecology, Volume 100, Issue 12, December 2024, fiae155, https://doi.org/10.1093/femsec/fiae155
 
